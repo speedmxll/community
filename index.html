@@ -18,6 +18,7 @@
             background-color: #ffca28;
             padding: 40px 20px;
             text-align: center;
+            position: relative;
         }
         header h1 {
             font-size: 48px;
@@ -27,22 +28,62 @@
             font-size: 24px;
             margin: 10px 0 0;
         }
+        /* Link to find out more */
+        .header-link {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .header-link a {
+            text-decoration: none;
+            color: #4e342e;
+            font-size: 18px;
+            font-weight: bold;
+            border: 2px solid #4e342e;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .header-link a:hover {
+            background-color: #4e342e;
+            color: #ffca28;
+        }
         .container {
             max-width: 800px;
             margin: 40px auto;
             padding: 0 20px;
             text-align: center;
         }
-        .hero-image {
+        /* Slideshow container */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        /* Slides */
+        .mySlides {
+            display: none;
             width: 100%;
             height: auto;
-            border-radius: 10px;
         }
+        /* Fade animation */
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
+        @keyframes fade {
+            from {opacity: 0.4}
+            to {opacity: 1}
+        }
+        /* Description */
         .description {
             font-size: 18px;
             line-height: 1.6;
             margin-top: 20px;
         }
+        /* Features */
         .features {
             margin: 40px 0;
         }
@@ -58,6 +99,7 @@
             font-size: 18px;
             margin: 10px 0;
         }
+        /* Journey */
         .journey {
             margin: 40px 0;
             text-align: left;
@@ -67,6 +109,7 @@
             margin-bottom: 20px;
             text-align: center;
         }
+        /* Subscribe */
         .subscribe {
             margin: 40px 0;
         }
@@ -74,6 +117,7 @@
             font-size: 32px;
             margin-bottom: 20px;
         }
+        /* Footer */
         footer {
             background-color: #ffca28;
             padding: 20px;
@@ -92,6 +136,10 @@
             }
             .features h2, .subscribe h2, .journey h2 {
                 font-size: 28px;
+            }
+            .header-link a {
+                font-size: 16px;
+                padding: 8px 12px;
             }
         }
         /* Style for details and summary */
@@ -122,10 +170,19 @@
     <header>
         <h1>The Dog House</h1>
         <p>Join us in creating the ultimate dog-themed board game!</p>
+        <!-- Link to find out more about the project -->
+        <div class="header-link">
+            <a href="https://linktr.ee/speedmxll" target="_blank" rel="noopener noreferrer">Find Out More</a>
+        </div>
     </header>
 
     <div class="container">
-        <img src="https://images.unsplash.com/photo-1601758175147-2fef253f0c56?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cute Dog" class="hero-image">
+        <!-- Slideshow container -->
+        <div class="slideshow-container">
+            <img src="slide1.webp" alt="Slide 1" class="mySlides fade">
+            <img src="slide2.webp" alt="Slide 2" class="mySlides fade">
+            <img src="slide3.webp" alt="Slide 3" class="mySlides fade">
+        </div>
 
         <div class="description">
             <p><strong>"The Dog House"</strong> is an exciting, dog-themed economy board game inspired by Monopoly but with a unique twist. Players, referred to as "hoomans," compete to become the Top Dog in an economy orchestrated by their pet dogs, who are the alphas of the household. Infused with dog memes and humor, this game offers a playful and engaging experience for all ages.</p>
@@ -187,5 +244,25 @@
     <footer>
         <p>&copy; 2023 The Dog House. All rights reserved.</p>
     </footer>
+
+    <!-- JavaScript for Slideshow -->
+    <script>
+        let slideIndex = 0;
+        const slides = document.getElementsByClassName("mySlides");
+        const totalSlides = slides.length;
+
+        function showSlides() {
+            for (let i = 0; i < totalSlides; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > totalSlides) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+
+        // Initialize the slideshow
+        window.onload = showSlides;
+    </script>
 </body>
 </html>
